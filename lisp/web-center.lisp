@@ -43,7 +43,7 @@
 	   (list (create-bus-info "campus -> home, Route 2" 2 115 886)
 		 (create-bus-info "campus -> home, Route 28" 28 115 914)
 		 (create-bus-info "home -> campus, Route 2" 2 131 986)
-		 (create-bus-info "home -> campus, Route 2" 28 131 986))))))
+		 (create-bus-info "home -> campus, Route 28" 28 131 986))))))
 
 	   
                                               
