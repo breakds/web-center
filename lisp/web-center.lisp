@@ -7,9 +7,26 @@
 (defparameter *acceptor* nil "the acceptor")
 
 ;;; Handlers are here
-(hunchentoot:define-easy-handler (test-handler :uri "/test") ()
+
+;; ==================== Module Status ====================
+;; test the server status
+(hunchentoot:define-easy-handler (test-handler :uri "/status") ()
   (setf (hunchentoot:content-type*) "text/html")
   (format nil "Web center is running.~%"))
+
+
+
+
+;; ==================== Module Bus Info ====================
+(hunchentoot:define-easy-handler (test-handler :uri "/bus") ()
+  (setf (hunchentoot:content-type*) "text/html")
+  (let ((output (make-string-output-stream)))
+    (format output "<u>Bus Info v0.2 for <b>breakds</b></u><br><br>~%")
+    (format output "<u>Bus No. 2: campus to home<br>~%")
+    (loop for every in (bus-info:get-bus-info 2 115 886)
+         (format output "~a <br>" every))
+    (get-output-stream-string output)))
+                                              
 
 
 
