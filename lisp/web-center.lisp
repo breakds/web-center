@@ -28,7 +28,7 @@
 		 collect (list :stamp every))
 	      (list (list :stamp "Sorry, no bus is coming."))))))
 
-(hunchentoot:define-easy-handler (test-handler :uri "/bus") ()
+(hunchentoot:define-easy-handler (bus-handler :uri "/bus") ()
   (setf (hunchentoot:content-type*) "text/html")
   ;; (let ((output (make-string-output-stream)))N
   ;;   (format output "<u>Bus Info v0.2 for <b>breakds</b></u><br><br>~%")
