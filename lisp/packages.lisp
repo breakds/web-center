@@ -1,7 +1,7 @@
 ;;;; packages.lisp
 
 (defpackage #:breakds.bus-info
-  (:nicknames #:bus)
+  (:nicknames #:bus-info)
   (:use #:cl)
   (:export #:get-bus-info))
 

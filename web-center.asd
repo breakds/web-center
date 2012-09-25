@@ -4,7 +4,7 @@
     :serial t
     :depends-on (#:hunchentoot
                  #:trivial-http
-                 #:ppcre
+                 #:cl-ppcre
                  #:html-template)
     :components ((:file "lisp/packages")
                  (:file "lisp/bus-info")

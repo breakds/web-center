@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title> Bus Info @ Madison, WI </title>
+  </head>
+  <body>
+    <h3> Bus Info @ Madison, WI </h3>
+    <!-- TMPL_LOOP stops -->
+    <p>
+    <u><!-- TMPL_VAR description --></u>
+    <table>
+      <!-- TMPL_LOOP time-stamps -->
+      <tr><td><!-- TMPL_VAR stamp --></td></tr>
+      <!-- /TMPL_LOOP -->
+    </table>
+    </p>
+    <!-- /TMPL_LOOP -->
+  </body>
+</html>

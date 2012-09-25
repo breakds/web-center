@@ -18,14 +18,34 @@
 
 
 ;; ==================== Module Bus Info ====================
+
+(defun create-bus-info (description route destination stop)
+  (let ((stamps (bus-info:get-bus-info route destination stop)))
+    (list :description description
+	  :time-stamps 
+	  (if stamps
+	      (loop for every in stamps
+		 collect (list :stamp every))
+	      (list (list :stamp "Sorry, no bus is coming."))))))
+
 (hunchentoot:define-easy-handler (test-handler :uri "/bus") ()
   (setf (hunchentoot:content-type*) "text/html")
-  (let ((output (make-string-output-stream)))
-    (format output "<u>Bus Info v0.2 for <b>breakds</b></u><br><br>~%")
-    (format output "<u>Bus No. 2: campus to home<br>~%")
-    (loop for every in (bus-info:get-bus-info 2 115 886)
-         (format output "~a <br>" every))
-    (get-output-stream-string output)))
+  ;; (let ((output (make-string-output-stream)))N
+  ;;   (format output "<u>Bus Info v0.2 for <b>breakds</b></u><br><br>~%")
+  ;;   (format output "<u>Bus No. 2: campus to home<br>~%")
+  ;;   (loop for every in (bus-info:get-bus-info 2 115 886)
+  ;;      do (format output "~a <br>" every))
+  ;;   (get-output-stream-string output)))
+  (with-output-to-string (html-template:*default-template-output*)
+    (html-template:fill-and-print-template
+     #P"../template/bus.template"
+     (list :stops 
+	   (list (create-bus-info "campus -> home, Route 2" 2 115 886)
+		 (create-bus-info "campus -> home, Route 28" 28 115 914)
+		 (create-bus-info "home -> campus, Route 2" 2 131 986)
+		 (create-bus-info "home -> campus, Route 2" 28 131 986))))))
+
+	   
                                               
 
 
