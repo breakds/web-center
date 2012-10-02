@@ -38,7 +38,7 @@
   ;;   (get-output-stream-string output)))
   (with-output-to-string (html-template:*default-template-output*)
     (html-template:fill-and-print-template
-     #P"../template/bus.template"
+     (asdf:system-relative-pathname 'web-center "template/bus.template")
      (list :stops 
 	   (list (create-bus-info "campus -> home, Route 2" 2 115 886)
 		 (create-bus-info "campus -> home, Route 28" 28 115 914)
